@@ -1,32 +1,34 @@
 // in this component we try to get the data and display it on admin panel
-import React from 'react'
-import { MdDeleteForever } from 'react-icons/md'
-import { useSelector,useDispatch } from 'react-redux'
-import { removeUser } from '../store/slices/UserSlice'
+import React from 'react';
+import { MdDeleteForever } from 'react-icons/md';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeUser } from '../store/slices/UserSlice';
 function DisplayUsers() {
-    // getting the data from store
-    const data = useSelector((state) => {
-        return state.users
-    })
-    const dispatch = useDispatch()
+  // getting the data from store
+  const data = useSelector((state) => {
+    return state.users;
+  });
+  const dispatch = useDispatch();
   const deleteUser = (id) => {
-      dispatch(removeUser(id))
-    }
-    return (
-      <Wrapper>
-            {
-                // display the data 
-          data.map((user, id) => <li key={id}>
+    dispatch(removeUser(id));
+  };
+  return (
+    <Wrapper>
+      {
+        // display the data
+        data.map((user, id) => (
+          <li key={id}>
             {user}
-            <button className="btn-delete" onClick={()=>deleteUser(id)}>
-              <MdDeleteForever className='delete-icon'/>
+            <button className="btn-delete" onClick={() => deleteUser(id)}>
+              <MdDeleteForever className="delete-icon" />
             </button>
-          </li>)
-            }
+          </li>
+        ))
+      }
     </Wrapper>
-  )
+  );
 }
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
   ul {
@@ -43,19 +45,19 @@ const Wrapper = styled.div`
   }
 
   .btn-delete {
-    background-color: red;
-    color: white;
+    background: none;
     border: none;
-    padding: 5px 10px;
+    padding: 0;
     cursor: pointer;
     display: flex;
     align-items: center;
   }
 
   .delete-icon {
+    color: red;
     font-size: 1.5em;
     margin-left: 5px;
   }
-`
+`;
 
-export default DisplayUsers
+export default DisplayUsers;
