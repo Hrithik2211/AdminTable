@@ -16,7 +16,7 @@ const userSlice = createSlice({
         //  },
     },
     extraReducers(builder) {
-        builder.addCase(userSlice.actions.deleteUsers, () => {
+        builder.addCase(deleteAllusers, () => {
             return []
         })
     }
